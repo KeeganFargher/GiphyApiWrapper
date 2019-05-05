@@ -23,6 +23,12 @@ steps:
     command: test
     projects: '**/Giphy.Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
+- task: NuGetCommand@2
+  inputs:
+    command: 'pack'
+    feedsToUse: 'select'
+    packagesToPack: 'Giphy/Giphy.csproj'
+    versioningScheme: 'byBuildNumber'
 - task: PublishBuildArtifacts@1
   inputs:
     ArtifactName: 'artifacts'
