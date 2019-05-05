@@ -6,29 +6,34 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  version: '0.0.1'
 
 steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'restore'
     projects: '**/*.csproj'
+
 - task: DotNetCoreCLI@2
   inputs:
     command: publish
     publishWebProjects: False
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: False
+
 - task: DotNetCoreCLI@2
   inputs:
     command: test
     projects: '**/Giphy.Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
-- task: NuGetCommand@2
+
+- task: DotNetCoreCLI@2
+  displayName: 'Pack'
   inputs:
-    command: 'pack'
-    feedsToUse: 'select'
-    packagesToPack: 'Giphy/Giphy.csproj'
-    versioningScheme: 'off'
+    command: pack
+    versioningScheme: byEnvVar
+    versionEnvVar: version
+    
 - task: PublishBuildArtifacts@1
   inputs:
     ArtifactName: 'artifacts'
