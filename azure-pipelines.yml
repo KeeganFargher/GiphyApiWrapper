@@ -28,7 +28,7 @@ steps:
     command: 'pack'
     feedsToUse: 'select'
     packagesToPack: 'Giphy/Giphy.csproj'
-    versioningScheme: 'byBuildNumber'
+    versioningScheme: 'off'
 - task: PublishBuildArtifacts@1
   inputs:
     ArtifactName: 'artifacts'
