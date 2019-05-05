@@ -21,7 +21,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: test
-    projects: '**/DiscordJifBot.Tests/*.csproj'
+    projects: '**/Giphy.Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
 - task: PublishBuildArtifacts@1
   inputs:
