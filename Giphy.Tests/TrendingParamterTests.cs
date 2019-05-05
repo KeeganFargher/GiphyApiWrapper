@@ -10,7 +10,7 @@ namespace Giphy.Tests
         [Fact]
         public void Limit_DefaultValue_Is25()
         {
-            var searchParamter = new TrendingParamter();
+            var searchParamter = new TrendingParameter();
 
             var expected = 25;
             var actual = searchParamter.Limit;
@@ -22,7 +22,7 @@ namespace Giphy.Tests
         [Fact]
         public void Offset_DefaultValue_Is0()
         {
-            var searchParamter = new TrendingParamter();
+            var searchParamter = new TrendingParameter();
 
             var expected = 0;
             var actual = searchParamter.Offset;
@@ -34,7 +34,7 @@ namespace Giphy.Tests
         [Fact]
         public void Rating_DefaultValue_IsG()
         {
-            var searchParamter = new TrendingParamter();
+            var searchParamter = new TrendingParameter();
 
             var expected = Rating.G;
             var actual = searchParamter.Rating;

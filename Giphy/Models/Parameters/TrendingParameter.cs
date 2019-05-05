@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Giphy.Models.Parameters
 {
-    public class TrendingParamter
+    public class TrendingParameter
     {
         /// <summary>
         /// (Optional) The number of results to return. Default 25.

@@ -91,7 +91,7 @@ namespace Giphy.Tests
         {
             var mockHttpHandler = GetMockHttpHandlerObject(_responseMessageFailed);
             var giphy = new Giphy(mockHttpHandler);
-            var search = new TrendingParamter();
+            var search = new TrendingParameter();
 
             _ = await Assert.ThrowsAsync<HttpRequestException>(() => giphy.Trending(search));
         }
@@ -101,7 +101,7 @@ namespace Giphy.Tests
         {
             var mockHttpHandler = GetMockHttpHandlerObject(_responseMessageSuccess);
             var giphy = new Giphy(mockHttpHandler);
-            var search = new TrendingParamter();
+            var search = new TrendingParameter();
 
             var actual = await giphy.Trending(search);
 
@@ -120,7 +120,7 @@ namespace Giphy.Tests
 
             //  The query variable was not set in the paramter model
             //  which is required to run a query on giphy's api
-            var search = new TranslateParamter();
+            var search = new TranslateParameter();
 
             _ = await Assert.ThrowsAsync<FormatException>(() => giphy.Translate(search));
         }
@@ -134,7 +134,7 @@ namespace Giphy.Tests
         {
             var giphy = new Giphy("test");
 
-            var search = new TranslateParamter
+            var search = new TranslateParameter
             {
                 Query = "test",
                 Weirdness = value
@@ -148,7 +148,7 @@ namespace Giphy.Tests
         {
             var mockHttpHandler = GetMockHttpHandlerObject(_responseMessageFailed);
             var giphy = new Giphy(mockHttpHandler);
-            var search = new TranslateParamter { Query = "test" };
+            var search = new TranslateParameter { Query = "test" };
 
             _ = await Assert.ThrowsAsync<HttpRequestException>(() => giphy.Translate(search));
         }
@@ -158,7 +158,7 @@ namespace Giphy.Tests
         {
             var mockHttpHandler = GetMockHttpHandlerObject(_responseMessageSuccess);
             var giphy = new Giphy(mockHttpHandler);
-            var search = new TranslateParamter { Query = "test" };
+            var search = new TranslateParameter { Query = "test" };
 
             var actual = await giphy.Translate(search);
 

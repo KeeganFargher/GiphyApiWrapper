@@ -9,7 +9,7 @@ namespace Giphy.Tests
         [Fact]
         public void Query_WhenSet_EscapesUriString()
         {
-            var param = new TranslateParamter
+            var param = new TranslateParameter
             {
                 Query = "This is a unit test!"
             };
@@ -25,7 +25,7 @@ namespace Giphy.Tests
         [Fact]
         public void Weirdness_DefaultValue_Is10()
         {
-            var param = new TranslateParamter();
+            var param = new TranslateParameter();
 
             var expected = 10;
             var actual = param.Weirdness;

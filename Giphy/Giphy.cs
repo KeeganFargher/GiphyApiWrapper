@@ -73,7 +73,7 @@ namespace Giphy
             return await response.Content.ReadAsAsync<RootObject>();
         }
 
-        public async Task<RootObject> Trending(TrendingParamter paramter)
+        public async Task<RootObject> Trending(TrendingParameter paramter)
         {
             string url =
                 $@"{ _trendingUrl }?
@@ -92,7 +92,7 @@ namespace Giphy
             return await response.Content.ReadAsAsync<RootObject>();
         }
 
-        public async Task<RootObject> Translate(TranslateParamter paramter)
+        public async Task<RootObject> Translate(TranslateParameter paramter)
         {
             if (string.IsNullOrEmpty(paramter.Query))
             {

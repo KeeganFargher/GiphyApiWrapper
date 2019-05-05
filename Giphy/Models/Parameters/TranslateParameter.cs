@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Giphy.Models.Parameters
 {
-    public class TranslateParamter
+    public class TranslateParameter
     {
         private string _query;
 
