@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giphy", "Giphy\Giphy.csproj", "{F41C1CFE-E1A6-43DD-BEB0-1930D096096F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiphyApiWrapper", "GiphyApiWrapper\GiphyApiWrapper.csproj", "{F41C1CFE-E1A6-43DD-BEB0-1930D096096F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giphy.Tests", "Giphy.Tests\Giphy.Tests.csproj", "{13B00C38-B84C-40EA-862D-E65B2A3D4869}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiphyApiWrapper.Tests", "GiphyApiWrapper.Tests\GiphyApiWrapper.Tests.csproj", "{13B00C38-B84C-40EA-862D-E65B2A3D4869}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
