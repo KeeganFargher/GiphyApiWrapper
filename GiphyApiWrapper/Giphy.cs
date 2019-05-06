@@ -22,6 +22,8 @@ namespace GiphyApiWrapper
 
         private readonly string _randomIdUrl = $"{ BaseUrl }/randomid";
 
+        private readonly string _translateUrl = $"{ BaseUrl }/v1/gifs/translate";
+
         private readonly string _stickersSearch = $"{ BaseUrl }/v1/stickers/search";
 
         /// <summary>
@@ -50,7 +52,7 @@ namespace GiphyApiWrapper
         /// <summary>
         /// Search endpoint for Giphy API
         /// </summary>
-        /// <param name="paramter">Search paramter</param>
+        /// <param name="paramter">Specifies search queries</param>
         /// <returns>Root object</returns>
         public async Task<RootObject> Search(SearchParameter parameter)
         {
@@ -78,6 +80,11 @@ namespace GiphyApiWrapper
             return await response.Content.ReadAsAsync<RootObject>();
         }
 
+        /// <summary>
+        /// Trending endpoint for Giphy API
+        /// </summary>
+        /// <param name="paramter">Specifies search queries</param>
+        /// <returns>Root object</returns>
         public async Task<RootObject> Trending(TrendingParameter parameter)
         {
             if (parameter is null)
@@ -99,6 +106,11 @@ namespace GiphyApiWrapper
             return await response.Content.ReadAsAsync<RootObject>();
         }
 
+        /// <summary>
+        /// Translate endpoint for Giphy API
+        /// </summary>
+        /// <param name="paramter">Specifies search queries/param>
+        /// <returns>Root object</returns>
         public async Task<RootObject> Translate(TranslateParameter parameter)
         {
             if (parameter is null)
@@ -118,7 +130,7 @@ namespace GiphyApiWrapper
 
             //  Finish exception checks
 
-            string url = $@"{ _randomIdUrl }?api_key={ _apiKey }&s={ parameter.Query }&weirdness={ parameter.Weirdness }";
+            string url = $@"{ _translateUrl }?api_key={ _apiKey }&s={ parameter.Query }&weirdness={ parameter.Weirdness }";
 
             var response = await _httpHandler.GetAsync(url);
 
