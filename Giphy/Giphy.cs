@@ -54,14 +54,7 @@ namespace Giphy
                 throw new FormatException("Query paramter cannot be null or empty.");
             }
 
-            string url =
-                $@"{ _searchUrl }?
-                api_key={ _apiKey }&
-                q={ paramter.Query }&
-                limit={ paramter.Limit }&
-                offset={ paramter.Offset }&
-                lang={ paramter.Language }&
-                rating={ paramter.Rating.ToString() }";
+            string url = $@"{ _searchUrl }?api_key={ _apiKey }&q={ paramter.Query }&limit={ paramter.Limit }&offset={ paramter.Offset }&lang={ paramter.Language }&rating={ paramter.Rating.ToString() }";
 
             var response = await _httpHandler.GetAsync(url);
 
@@ -75,12 +68,7 @@ namespace Giphy
 
         public async Task<RootObject> Trending(TrendingParameter paramter)
         {
-            string url =
-                $@"{ _trendingUrl }?
-                api_key={ _apiKey }&
-                limit={ paramter.Limit }&
-                offset={ paramter.Offset }&
-                rating={ paramter.Rating.ToString() }";
+            string url = $@"{ _trendingUrl }?api_key={ _apiKey }&limit={ paramter.Limit }&offset={ paramter.Offset }&rating={ paramter.Rating.ToString() }";
 
             var response = await _httpHandler.GetAsync(url);
 
@@ -104,11 +92,7 @@ namespace Giphy
                 throw new FormatException("Weirdness paramter must be a value between 0 - 10");
             }
 
-            string url =
-                $@"{ _randomIdUrl }?
-                api_key={ _apiKey }&
-                s={ paramter.Query }&
-                weirdness={ paramter.Weirdness }";
+            string url = $@"{ _randomIdUrl }?api_key={ _apiKey }&s={ paramter.Query }&weirdness={ paramter.Weirdness }";
 
             var response = await _httpHandler.GetAsync(url);
 
