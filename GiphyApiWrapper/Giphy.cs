@@ -32,6 +32,11 @@ namespace GiphyApiWrapper
         {
             _apiKey = apiKey;
             _httpHandler = new HttpClientHandler();
+
+            if (string.IsNullOrEmpty(_apiKey))
+            {
+                throw new FormatException("Giphy API key cannot be null or empty.");
+            }
         }
 
         /// <summary>
