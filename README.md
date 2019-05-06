@@ -13,6 +13,8 @@ Most endpoints return a [RootObject](https://developers.giphy.com/docs/#gif-obje
 
 ### Search
 ```c#
+using GiphyApiWrapper;
+
 var giphy = new Giphy("YOUR_API_KEY");
 var paramter = new SearchParameter
 {
@@ -25,6 +27,8 @@ RootObject result = await giphy.Search(parameter);
 
 ### Trending
 ```c#
+using GiphyApiWrapper;
+
 var giphy = new Giphy("YOUR_API_KEY");
 var paramter = new TrendingParameter
 {
@@ -37,6 +41,8 @@ RootObject result = await giphy.Trending(paramter);
 
 ### Translate
 ```c#
+using GiphyApiWrapper;
+
 var giphy = new Giphy("YOUR_API_KEY");
 var paramter = new TranslateParameter
 {
