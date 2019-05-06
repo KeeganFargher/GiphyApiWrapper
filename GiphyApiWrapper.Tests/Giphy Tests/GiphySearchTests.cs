@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xunit;
 using GiphyApiWrapper;
 
-namespace GiphyApiWrapper.Tests
+namespace GiphyApiWrapper.Tests.Giphy_Tests
 {
     public class GiphySearchTests
     {

@@ -2,7 +2,7 @@ using GiphyApiWrapper.Models.Parameters;
 using System;
 using Xunit;
 
-namespace GiphyApiWrapper.Tests
+namespace GiphyApiWrapper.Tests.Model_Tests
 {
     public class SearchParamterTests
     {

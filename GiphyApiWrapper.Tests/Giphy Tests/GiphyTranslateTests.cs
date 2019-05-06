@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace GiphyApiWrapper.Tests
+namespace GiphyApiWrapper.Tests.Giphy_Tests
 {
     public class GiphyTranslateTests
     {
