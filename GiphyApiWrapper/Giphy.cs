@@ -47,14 +47,21 @@ namespace GiphyApiWrapper
         /// </summary>
         /// <param name="paramter">Search paramter</param>
         /// <returns>Root object</returns>
-        public async Task<RootObject> Search(SearchParameter paramter)
+        public async Task<RootObject> Search(SearchParameter parameter)
         {
-            if (string.IsNullOrEmpty(paramter.Query))
+            if (parameter is null)
+            {
+                throw new NullReferenceException("Paramter cannot be null");
+            }
+
+            if (string.IsNullOrEmpty(parameter.Query))
             {
                 throw new FormatException("Query paramter cannot be null or empty.");
             }
 
-            string url = $@"{ _searchUrl }?api_key={ _apiKey }&q={ paramter.Query }&limit={ paramter.Limit }&offset={ paramter.Offset }&lang={ paramter.Language }&rating={ paramter.Rating.ToString() }";
+            //  Finish exception checks
+
+            string url = $@"{ _searchUrl }?api_key={ _apiKey }&q={ parameter.Query }&limit={ parameter.Limit }&offset={ parameter.Offset }&lang={ parameter.Language }&rating={ parameter.Rating.ToString() }";
 
             var response = await _httpHandler.GetAsync(url);
 
@@ -66,9 +73,16 @@ namespace GiphyApiWrapper
             return await response.Content.ReadAsAsync<RootObject>();
         }
 
-        public async Task<RootObject> Trending(TrendingParameter paramter)
+        public async Task<RootObject> Trending(TrendingParameter parameter)
         {
-            string url = $@"{ _trendingUrl }?api_key={ _apiKey }&limit={ paramter.Limit }&offset={ paramter.Offset }&rating={ paramter.Rating.ToString() }";
+            if (parameter is null)
+            {
+                throw new NullReferenceException("Paramter cannot be null");
+            }
+
+            //  Finish exception checks
+
+            string url = $@"{ _trendingUrl }?api_key={ _apiKey }&limit={ parameter.Limit }&offset={ parameter.Offset }&rating={ parameter.Rating.ToString() }";
 
             var response = await _httpHandler.GetAsync(url);
 
@@ -80,19 +94,26 @@ namespace GiphyApiWrapper
             return await response.Content.ReadAsAsync<RootObject>();
         }
 
-        public async Task<RootObject> Translate(TranslateParameter paramter)
+        public async Task<RootObject> Translate(TranslateParameter parameter)
         {
-            if (string.IsNullOrEmpty(paramter.Query))
+            if (parameter is null)
+            {
+                throw new NullReferenceException("Paramter cannot be null");
+            }
+
+            if (string.IsNullOrEmpty(parameter.Query))
             {
                 throw new FormatException("Query paramter cannot be null or empty.");
             }
 
-            if (paramter.Weirdness < 0 || paramter.Weirdness > 10)
+            if (parameter.Weirdness < 0 || parameter.Weirdness > 10)
             {
                 throw new FormatException("Weirdness paramter must be a value between 0 - 10");
             }
 
-            string url = $@"{ _randomIdUrl }?api_key={ _apiKey }&s={ paramter.Query }&weirdness={ paramter.Weirdness }";
+            //  Finish exception checks
+
+            string url = $@"{ _randomIdUrl }?api_key={ _apiKey }&s={ parameter.Query }&weirdness={ parameter.Weirdness }";
 
             var response = await _httpHandler.GetAsync(url);
 

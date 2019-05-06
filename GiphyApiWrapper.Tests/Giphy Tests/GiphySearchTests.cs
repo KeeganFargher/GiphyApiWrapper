@@ -24,6 +24,16 @@ namespace GiphyApiWrapper.Tests
         }
 
         [Fact]
+        public async Task Search_ParameterIsNull_ThrowsNullReferenceException()
+        {
+            var giphy = new Giphy("test");
+
+            SearchParameter search = null;
+
+            _ = await Assert.ThrowsAsync<NullReferenceException>(() => giphy.Search(search));
+        }
+
+        [Fact]
         public async Task Search_NotSuccessStatusCode_ThrowsHttpRequestException()
         {
             var mockHttpHandler = HttpHandler.GetMockFailedHttpHandlerObject();

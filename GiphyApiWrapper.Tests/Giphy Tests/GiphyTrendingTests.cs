@@ -1,6 +1,7 @@
 ﻿using GiphyApiWrapper.Models;
 using GiphyApiWrapper.Models.Parameters;
 using GiphyApiWrapper.Tests.Mock_Data;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
@@ -18,6 +19,16 @@ namespace GiphyApiWrapper.Tests
             var search = new TrendingParameter();
 
             _ = await Assert.ThrowsAsync<HttpRequestException>(() => giphy.Trending(search));
+        }
+
+        [Fact]
+        public async Task Trending_ParameterIsNull_ThrowsNullReferenceException()
+        {
+            var giphy = new Giphy("test");
+
+            TrendingParameter search = null;
+
+            _ = await Assert.ThrowsAsync<NullReferenceException>(() => giphy.Trending(search));
         }
 
         [Fact]

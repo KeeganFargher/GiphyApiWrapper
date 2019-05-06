@@ -22,6 +22,16 @@ namespace GiphyApiWrapper.Tests
             _ = await Assert.ThrowsAsync<FormatException>(() => giphy.Translate(search));
         }
 
+        [Fact]
+        public async Task Translate_ParameterIsNull_ThrowsNullReferenceException()
+        {
+            var giphy = new Giphy("test");
+
+            TranslateParameter search = null;
+
+            _ = await Assert.ThrowsAsync<NullReferenceException>(() => giphy.Translate(search));
+        }
+
         [Theory]
         [InlineData(-5)]
         [InlineData(11)]
