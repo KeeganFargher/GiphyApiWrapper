@@ -10,7 +10,6 @@ namespace GiphyApiWrapper.Tests.Giphy_Tests
 {
     public class GiphyTrendingTests
     {
-
         [Fact]
         public async Task Trending_NotSuccessStatusCode_ThrowsHttpRequestException()
         {
@@ -43,6 +42,5 @@ namespace GiphyApiWrapper.Tests.Giphy_Tests
             Assert.NotNull(actual);
             Assert.IsType<RootObject>(actual);
         }
-
     }
 }

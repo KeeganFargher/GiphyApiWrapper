@@ -13,27 +13,23 @@ steps:
   inputs:
     command: 'restore'
     projects: '**/*.csproj'
-
 - task: DotNetCoreCLI@2
   inputs:
     command: publish
     publishWebProjects: False
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: False
-
 - task: DotNetCoreCLI@2
   inputs:
     command: test
     projects: '**/Giphy.Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
-
 - task: DotNetCoreCLI@2
   displayName: 'Pack'
   inputs:
     command: pack
     versioningScheme: byEnvVar
     versionEnvVar: version
-    
 - task: PublishBuildArtifacts@1
   inputs:
     ArtifactName: 'artifacts'

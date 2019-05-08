@@ -6,7 +6,6 @@ namespace GiphyApiWrapper.Tests.Model_Tests
 {
     public class TrendingParamterTests
     {
-
         [Fact]
         public void Limit_DefaultValue_Is25()
         {
