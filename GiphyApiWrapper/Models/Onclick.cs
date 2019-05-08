@@ -8,5 +8,4 @@ namespace GiphyApiWrapper.Models
         [JsonProperty("url")]
         public Uri Url { get; set; }
     }
-
 }

@@ -75,7 +75,7 @@ namespace GiphyApiWrapper
             if (!response.IsSuccessStatusCode)
             {
                 throw new HttpRequestException(response.ReasonPhrase);
-            };
+            }
 
             return await response.Content.ReadAsAsync<RootObject>();
         }
@@ -101,7 +101,7 @@ namespace GiphyApiWrapper
             if (!response.IsSuccessStatusCode)
             {
                 throw new HttpRequestException(response.ReasonPhrase);
-            };
+            }
 
             return await response.Content.ReadAsAsync<RootObject>();
         }
@@ -137,7 +137,7 @@ namespace GiphyApiWrapper
             if (!response.IsSuccessStatusCode)
             {
                 throw new HttpRequestException(response.ReasonPhrase);
-            };
+            }
 
             return await response.Content.ReadAsAsync<RootObject>();
         }

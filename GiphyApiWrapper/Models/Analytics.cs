@@ -13,5 +13,4 @@ namespace GiphyApiWrapper.Models
         [JsonProperty("onsent")]
         public Onclick Onsent { get; set; }
     }
-
 }
