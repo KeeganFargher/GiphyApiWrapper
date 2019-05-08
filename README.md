@@ -3,6 +3,7 @@ This is a simple wrapper for consuming Giphy endpoints in .NET. GiphyApiWrapper 
 
 ### Build Status
 [![Build Status](https://dev.azure.com/fargherkeegan/GiphyApiWrapper/_apis/build/status/KeeganFargher.GiphyApiWrapper?branchName=master)](https://dev.azure.com/fargherkeegan/GiphyApiWrapper/_build/latest?definitionId=7&branchName=master)
+[![CodeFactor](https://www.codefactor.io/repository/github/keeganfargher/giphyapiwrapper/badge)](https://www.codefactor.io/repository/github/keeganfargher/giphyapiwrapper)
 
 ### Getting Started
 Either `Install-Package GiphyApiWrapper` or just search for `GiphyApiWrapper` in the Nuget package manager.
