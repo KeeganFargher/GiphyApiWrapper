@@ -172,7 +172,7 @@ namespace GiphyApiWrapper
 
             //  Finish exception checks
 
-            string url = $@"{ _getGifByIdUrl }?api_key={ _apiKey }&gif_id={ gifId }";
+            string url = $@"{ _getGifByIdUrl }/gif_id={ gifId }?api_key={ _apiKey }";
 
             var response = await _httpHandler.GetAsync(url);
 
