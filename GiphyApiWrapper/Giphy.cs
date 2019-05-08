@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,8 @@ namespace GiphyApiWrapper
         private readonly string _translateUrl = $"{ BaseUrl }/gifs/translate";
 
         private readonly string _getGifByIdUrl = $"{ BaseUrl }/gifs";
+
+        private readonly string _getGifsByIdUrl = $"{ BaseUrl }/gifs";
 
         /* Giphy random ID */
 
@@ -80,7 +83,7 @@ namespace GiphyApiWrapper
                 throw new FormatException("Query paramter cannot be null or empty.");
             }
 
-            //  Finish exception checks
+            /* Finish exception checks */
 
             string url = $@"{ _searchUrl }?api_key={ _apiKey }&q={ parameter.Query }&limit={ parameter.Limit }&offset={ parameter.Offset }&lang={ parameter.Language }&rating={ parameter.Rating.ToString() }";
 
@@ -106,7 +109,7 @@ namespace GiphyApiWrapper
                 throw new NullReferenceException("Paramter cannot be null");
             }
 
-            //  Finish exception checks
+            /* Finish exception checks */
 
             string url = $@"{ _trendingUrl }?api_key={ _apiKey }&limit={ parameter.Limit }&offset={ parameter.Offset }&rating={ parameter.Rating.ToString() }";
 
@@ -144,7 +147,7 @@ namespace GiphyApiWrapper
                 throw new FormatException("Weirdness paramter must be a value between 0 - 10");
             }
 
-            //  Finish exception checks
+            /* Finish exception checks */
 
             string url = $@"{ _translateUrl }?api_key={ _apiKey }&s={ parameter.Query }&weirdness={ parameter.Weirdness }";
 
@@ -170,7 +173,7 @@ namespace GiphyApiWrapper
                 throw new FormatException("Id paramter cannot be null or empty.");
             }
 
-            //  Finish exception checks
+            /* Finish exception checks */
 
             string url = $@"{ _getGifByIdUrl }/gif_id={ gifId }?api_key={ _apiKey }";
 
@@ -185,7 +188,47 @@ namespace GiphyApiWrapper
         }
 
         /// <summary>
-        /// Sticker search endpoint for Giphy API
+        /// Returns GIF metadata when a user enters a GIF's unique ID
+        /// </summary>
+        /// <param name="gifIds">The list of GIF ids/param>
+        /// <returns>Root object</returns>
+        public async Task<RootObject> GetGifsById(List<string> gifIds)
+        {
+            if (gifIds is null)
+            {
+                throw new NullReferenceException("The list of GIFs cannot be null.");
+            }
+
+            if (gifIds?.Count == 0)
+            {
+                throw new FormatException("The list of GIFs cannot be empty.");
+            }
+
+            if (gifIds.Any(x => x == null))
+            {
+                throw new NullReferenceException("One or more of the items in your list contains a null value.");
+            }
+
+            /* Finish exception checks */
+
+            //  The GIF ids need to be comma seperated and white space removed
+            var ids = gifIds.Aggregate((a, b) => a + "," + b.Trim());
+
+            string url = $@"{ _getGifsByIdUrl }?api_key={ _apiKey }&ids={ ids }";
+
+            var response = await _httpHandler.GetAsync(url);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException(response.ReasonPhrase);
+            }
+
+            return await response.Content.ReadAsAsync<RootObject>();
+        }
+
+        /// <summary>
+        /// Replicates the functionality and requirements of the 
+        /// classic GIPHY search, but returns animated stickers rather than GIFs.
         /// </summary>
         /// <param name="parameter">Specifies search queries</param>
         /// <returns>Root object</returns>
@@ -201,7 +244,7 @@ namespace GiphyApiWrapper
                 throw new FormatException("Query paramter cannot be null or empty.");
             }
 
-            //  Finish exception checks
+            /* Finish exception checks */
 
             string url = $@"{ _stickersSearchUrl }?api_key={ _apiKey }&q={ parameter.Query }&limit={ parameter.Limit }&offset={ parameter.Offset }&lang={ parameter.Language }&rating={ parameter.Rating.ToString() }";
 
