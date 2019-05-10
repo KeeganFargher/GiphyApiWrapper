@@ -6,12 +6,14 @@
     <StartupObject />
     <Authors>Keegan Fargher</Authors>
     <PackageId>GiphyApiWrapper</PackageId>
-    <Version>0.1.2</Version>
+    <Version>0.2.1</Version>
     <Description>An API wrapper that makes it easy to consume Giphy endpoints.</Description>
     <RepositoryUrl>https://github.com/KeeganFargher/GiphyApiWrapper</RepositoryUrl>
-    <PackageTags>giphy api keegan fargher standard dotnet gif search images</PackageTags>
+    <PackageTags>giphy api keegan fargher standard dotnet gif search images jif wrapper</PackageTags>
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://github.com/KeeganFargher/GiphyApiWrapper</PackageProjectUrl>
+    <PackageReleaseNotes>Gave the package an icon</PackageReleaseNotes>
+    <PackageIconUrl>https://giphy.com/static/img/giphy_logo_square_social.png</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>

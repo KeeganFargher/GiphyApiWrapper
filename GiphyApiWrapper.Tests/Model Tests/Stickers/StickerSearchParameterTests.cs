@@ -1,8 +1,9 @@
 using GiphyApiWrapper.Models.Parameters;
+using GiphyApiWrapper.Models.Parameters.Stickers;
 using System;
 using Xunit;
 
-namespace GiphyApiWrapper.Tests.Model_Tests
+namespace GiphyApiWrapper.Tests.Model_Tests.Stickers
 {
     public class StickerSearchParameterTests
     {

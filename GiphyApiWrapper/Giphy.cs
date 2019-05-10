@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GiphyApiWrapper.Models;
 using GiphyApiWrapper.Models.Parameters;
+using GiphyApiWrapper.Models.Parameters.Stickers;
 
 namespace GiphyApiWrapper
 {
@@ -279,6 +280,97 @@ namespace GiphyApiWrapper
             /* Finish exception checks */
 
             string url = $@"{ _stickersSearchUrl }?api_key={ _apiKey }&q={ parameter.Query }&limit={ parameter.Limit }&offset={ parameter.Offset }&lang={ parameter.Language }&rating={ parameter.Rating.ToString() }";
+
+            var response = await _httpHandler.GetAsync(url);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException(response.ReasonPhrase);
+            }
+
+            return await response.Content.ReadAsAsync<RootObject>();
+        }
+
+        /// <summary>
+        /// Fetch Stickers currently trending online.
+        /// Hand curated by the GIPHY editorial team.
+        /// Returns 25 results by default.
+        /// </summary>
+        /// <param name="parameter">Specifies search parameters</param>
+        /// <returns>Root object</returns>
+        public async Task<RootObject> StickerTrending(StickerTrendingParameter parameter)
+        {
+            if (parameter is null)
+            {
+                throw new NullReferenceException("Paramter cannot be null");
+            }
+
+            /* Finish exception checks */
+
+            string url = $@"{ _stickersTrendingUrl }?api_key={ _apiKey }&limit={ parameter.Limit }&rating={ parameter.Rating.ToString() }";
+
+            var response = await _httpHandler.GetAsync(url);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException(response.ReasonPhrase);
+            }
+
+            return await response.Content.ReadAsAsync<RootObject>();
+        }
+
+        /// <summary>
+        /// The translate API draws on search, but uses the GIPHY special
+        /// sauce to handle translating from one vocabulary to another.
+        /// In this case, words and phrases to GIFs.
+        /// </summary>
+        /// <param name="parameter">Specifies search parameters</param>
+        /// <returns>Root object</returns>
+        public async Task<RootObject> StickerTranslate(StickerTranslateParameter parameter)
+        {
+            if (parameter is null)
+            {
+                throw new NullReferenceException("Paramter cannot be null");
+            }
+
+            if (string.IsNullOrEmpty(parameter.Query))
+            {
+                throw new FormatException("Query paramter cannot be null or empty.");
+            }
+
+            /* Finish exception checks */
+
+            string url = $@"{ _stickersTranslateUrl }?api_key={ _apiKey }&s={ parameter.Query }";
+
+            var response = await _httpHandler.GetAsync(url);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException(response.ReasonPhrase);
+            }
+
+            return await response.Content.ReadAsAsync<RootObject>();
+        }
+
+        /// <summary>
+        /// Returns a random Sticker, limited by tag. 
+        /// Excluding the tag parameter will return a 
+        /// random Sticker from the GIPHY catalog.
+        /// </summary>
+        /// <param name="parameter">Specifies search parameters</param>
+        /// <returns>Root object</returns>
+        public async Task<RootObject> StickerRandom(StickerRandomParameter parameter)
+        {
+            if (parameter is null)
+            {
+                throw new NullReferenceException("Paramter cannot be null");
+            }
+
+            /* Finish exception checks */
+
+            string url = $@"{ _randomUrl }?api_key={ _apiKey }";
+            url += parameter.Tag != null ? $"&tag={ parameter.Tag }" : "";
+            url += $"&rating={ parameter.Rating }";
 
             var response = await _httpHandler.GetAsync(url);
 

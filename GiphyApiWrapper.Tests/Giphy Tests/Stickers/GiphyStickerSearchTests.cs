@@ -6,8 +6,9 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 using GiphyApiWrapper;
+using GiphyApiWrapper.Models.Parameters.Stickers;
 
-namespace GiphyApiWrapper.Tests.Giphy_Tests
+namespace GiphyApiWrapper.Tests.Giphy_Tests.Stickers
 {
     public class GiphyStickerSearchTests
     {
