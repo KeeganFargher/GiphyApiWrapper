@@ -9,7 +9,7 @@ using Xunit;
 
 namespace GiphyApiWrapper.Tests.Giphy_Tests
 {
-    public class GiphyGetGifByIdTests
+    public class GiphyGifByIdTests
     {
         [Fact]
         public async Task GifIdIsNull_ThrowsFormatException()
@@ -18,7 +18,7 @@ namespace GiphyApiWrapper.Tests.Giphy_Tests
 
             string id = null;
 
-            _ = await Assert.ThrowsAsync<FormatException>(() => giphy.GetGifById(id));
+            _ = await Assert.ThrowsAsync<FormatException>(() => giphy.GifById(id));
         }
 
         [Fact]
@@ -28,7 +28,7 @@ namespace GiphyApiWrapper.Tests.Giphy_Tests
 
             string id = "";
 
-            _ = await Assert.ThrowsAsync<FormatException>(() => giphy.GetGifById(id));
+            _ = await Assert.ThrowsAsync<FormatException>(() => giphy.GifById(id));
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace GiphyApiWrapper.Tests.Giphy_Tests
             var giphy = new Giphy(mockHttpHandler);
             var id = "xT4uQulxzV39haRFjG";
 
-            _ = await Assert.ThrowsAsync<HttpRequestException>(() => giphy.GetGifById(id));
+            _ = await Assert.ThrowsAsync<HttpRequestException>(() => giphy.GifById(id));
         }
 
         [Fact]
@@ -48,7 +48,7 @@ namespace GiphyApiWrapper.Tests.Giphy_Tests
             var giphy = new Giphy(mockHttpHandler);
             var id = "xT4uQulxzV39haRFjG";
 
-            var actual = await giphy.GetGifById(id);
+            var actual = await giphy.GifById(id);
 
             Assert.NotNull(actual);
             Assert.IsType<RootObject>(actual);

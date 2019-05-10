@@ -25,9 +25,12 @@ namespace GiphyApiWrapper
 
         private readonly string _translateUrl = $"{ BaseUrl }/gifs/translate";
 
+        private readonly string _randomUrl = $"{ BaseUrl }/gifs/random";
+
         private readonly string _getGifByIdUrl = $"{ BaseUrl }/gifs";
 
         private readonly string _getGifsByIdUrl = $"{ BaseUrl }/gifs";
+
 
         /* Giphy random ID */
 
@@ -69,7 +72,7 @@ namespace GiphyApiWrapper
         /// <summary>
         /// Search GIPHY's library of millions of GIFs for a word or phrase.
         /// </summary>
-        /// <param name="parameter">Specifies search queries</param>
+        /// <param name="parameter">Specifies search parameters</param>
         /// <returns>Root object</returns>
         public async Task<RootObject> Search(SearchParameter parameter)
         {
@@ -100,7 +103,7 @@ namespace GiphyApiWrapper
         /// <summary>
         /// Returns a list of the top trending GIFs on the internet, consistently updated throughout each day.
         /// </summary>
-        /// <param name="parameter">Specifies search queries</param>
+        /// <param name="parameter">Specifies search parameters</param>
         /// <returns>Root object</returns>
         public async Task<RootObject> Trending(TrendingParameter parameter)
         {
@@ -128,7 +131,7 @@ namespace GiphyApiWrapper
         /// to handle translating from one vocabulary to another. In this case,
         /// words and phrases to GIFs.
         /// </summary>
-        /// <param name="parameter">Specifies search queries/param>
+        /// <param name="parameter">Specifies search parameters/param>
         /// <returns>Root object</returns>
         public async Task<RootObject> Translate(TranslateParameter parameter)
         {
@@ -162,11 +165,40 @@ namespace GiphyApiWrapper
         }
 
         /// <summary>
+        /// Returns a random GIF within the category of a specified tag.
+        /// If no tag is specified, the GIF returned will be completely random.
+        /// </summary>
+        /// <param name="parameter">Specifies search parameters/param>
+        /// <returns>Root object</returns>
+        public async Task<RootObject> Random(RandomParameter parameter)
+        {
+            if (parameter is null)
+            {
+                throw new NullReferenceException("Paramter cannot be null");
+            }
+
+            /* Finish exception checks */
+
+            string url = $@"{ _randomUrl }?api_key={ _apiKey }";
+            url += parameter.Tag != null ? $"&tag={ parameter.Tag }" : "";
+            url += $"&rating={ parameter.Rating }";
+
+            var response = await _httpHandler.GetAsync(url);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException(response.ReasonPhrase);
+            }
+
+            return await response.Content.ReadAsAsync<RootObject>();
+        }
+
+        /// <summary>
         /// Returns GIF metadata when a user enters a GIF's unique ID
         /// </summary>
         /// <param name="gifId">The ID of the GIF/param>
         /// <returns>Root object</returns>
-        public async Task<RootObject> GetGifById(string gifId)
+        public async Task<RootObject> GifById(string gifId)
         {
             if (string.IsNullOrEmpty(gifId))
             {
@@ -192,7 +224,7 @@ namespace GiphyApiWrapper
         /// </summary>
         /// <param name="gifIds">The list of GIF ids/param>
         /// <returns>Root object</returns>
-        public async Task<RootObject> GetGifsById(List<string> gifIds)
+        public async Task<RootObject> GifsById(List<string> gifIds)
         {
             if (gifIds is null)
             {
@@ -230,7 +262,7 @@ namespace GiphyApiWrapper
         /// Replicates the functionality and requirements of the 
         /// classic GIPHY search, but returns animated stickers rather than GIFs.
         /// </summary>
-        /// <param name="parameter">Specifies search queries</param>
+        /// <param name="parameter">Specifies search parameters</param>
         /// <returns>Root object</returns>
         public async Task<RootObject> StickerSearch(StickerSearchParameter parameter)
         {

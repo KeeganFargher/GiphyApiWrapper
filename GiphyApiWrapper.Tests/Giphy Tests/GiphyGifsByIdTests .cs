@@ -9,7 +9,7 @@ using Xunit;
 
 namespace GiphyApiWrapper.Tests.Giphy_Tests
 {
-    public class GiphyGetGifsByIdTests
+    public class GiphyGifsByIdTests
     {
         [Fact]
         public async Task GifIdsIsNull_ThrowsFormatException()
@@ -18,7 +18,7 @@ namespace GiphyApiWrapper.Tests.Giphy_Tests
 
             List<string> data = null;
 
-            _ = await Assert.ThrowsAsync<NullReferenceException>(() => giphy.GetGifsById(data));
+            _ = await Assert.ThrowsAsync<NullReferenceException>(() => giphy.GifsById(data));
         }
 
         [Fact]
@@ -28,7 +28,7 @@ namespace GiphyApiWrapper.Tests.Giphy_Tests
 
             List<string> data = new List<string>();
 
-            _ = await Assert.ThrowsAsync<FormatException>(() => giphy.GetGifsById(data));
+            _ = await Assert.ThrowsAsync<FormatException>(() => giphy.GifsById(data));
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace GiphyApiWrapper.Tests.Giphy_Tests
 
             List<string> data = new List<string> { "test1", null, "test3" };
 
-            _ = await Assert.ThrowsAsync<NullReferenceException>(() => giphy.GetGifsById(data));
+            _ = await Assert.ThrowsAsync<NullReferenceException>(() => giphy.GifsById(data));
         }
 
         [Fact]
@@ -48,7 +48,7 @@ namespace GiphyApiWrapper.Tests.Giphy_Tests
             var giphy = new Giphy(mockHttpHandler);
             List<string> data = new List<string> { "test1", "test2" };
 
-            _ = await Assert.ThrowsAsync<HttpRequestException>(() => giphy.GetGifsById(data));
+            _ = await Assert.ThrowsAsync<HttpRequestException>(() => giphy.GifsById(data));
         }
 
         [Fact]
@@ -58,7 +58,7 @@ namespace GiphyApiWrapper.Tests.Giphy_Tests
             var giphy = new Giphy(mockHttpHandler);
             List<string> data = new List<string> { "test1", "test2" };
 
-            var actual = await giphy.GetGifsById(data);
+            var actual = await giphy.GifsById(data);
 
             Assert.NotNull(actual);
             Assert.IsType<RootObject>(actual);
