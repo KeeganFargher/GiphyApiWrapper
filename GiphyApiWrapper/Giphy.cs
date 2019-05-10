@@ -368,7 +368,7 @@ namespace GiphyApiWrapper
 
             /* Finish exception checks */
 
-            string url = $@"{ _randomUrl }?api_key={ _apiKey }";
+            string url = $@"{ _stickersRandomUrl }?api_key={ _apiKey }";
             url += parameter.Tag != null ? $"&tag={ parameter.Tag }" : "";
             url += $"&rating={ parameter.Rating }";
 
