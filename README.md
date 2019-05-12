@@ -1,23 +1,46 @@
-## GiphyApiWrapper (Alpha)
+# GiphyApiWrapper
 
 This is a simple wrapper for consuming Giphy endpoints in .NET. GiphyApiWrapper allows you to consume the Giphy API without having to handle the requests yourself.
 
-### Build Status
+## Build Status
 
 [![Build Status](https://dev.azure.com/fargherkeegan/GiphyApiWrapper/_apis/build/status/KeeganFargher.GiphyApiWrapper?branchName=master)](https://dev.azure.com/fargherkeegan/GiphyApiWrapper/_build/latest?definitionId=7&branchName=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/keeganfargher/giphyapiwrapper/badge)](https://www.codefactor.io/repository/github/keeganfargher/giphyapiwrapper)
 
-### Getting Started
+## Getting Started
 
-Either `Install-Package GiphyApiWrapper` or just search for `GiphyApiWrapper` in the Nuget package manager.
+### Prerequisites
+
+-   .NET Standard 2.0
+-   Preferably Visual Studio / VS Code
+
+### Nuget
+
+`Install-Package GiphyApiWrapper`
+Head over to [Nuget](https://www.nuget.org/packages/GiphyApiWrapper/) to view more download options.
+
+### Clone
+
+```batch
+git clone https://github.com/KeeganFargher/GiphyApiWrapper.git
+cd GiphyApiWrapper
+dotnet publish
+dotnet test
+```
+
+## Contributing
+
+Pull requests are definitely welcome.
 
 ## Usage
 
-Most methods return a [RootObject](https://developers.giphy.com/docs/#gif-object) unless otherwise specified.
+You can head over to [Giphy Developers](https://developers.giphy.com) to view more information
+about the various API endpoints.  
+Most methods below will return a [RootObject](https://developers.giphy.com/docs/#gif-object).
 
 ### Search
 
-```c#
+```csharp
 using GiphyApiWrapper;
 using GiphyApiWrapper.Models.Parameters;
 
@@ -35,7 +58,7 @@ RootObject result = await giphy.Search(parameter);
 
 ### Trending
 
-```c#
+```csharp
 using GiphyApiWrapper;
 using GiphyApiWrapper.Models.Parameters;
 
@@ -51,7 +74,7 @@ RootObject result = await giphy.Trending(parameter);
 
 ### Translate
 
-```c#
+```csharp
 using GiphyApiWrapper;
 using GiphyApiWrapper.Models.Parameters;
 
@@ -66,7 +89,7 @@ GiphySingle result = await giphy.Translate(parameter);
 
 ### Random
 
-```c#
+```csharp
 using GiphyApiWrapper;
 using GiphyApiWrapper.Models.Parameters;
 
@@ -81,18 +104,18 @@ GiphySingle result = await giphy.Random(parameter);
 
 ### GIF by ID
 
-```c#
+```csharp
 using GiphyApiWrapper;
 using GiphyApiWrapper.Models.Parameters;
 
 var giphy = new Giphy("YOUR_API_KEY");
-var id = "xT4uQulxzV39haRFjG"
+var id = "xT4uQulxzV39haRFjG";
 GiphySingle result = await giphy.GifById(id);
 ```
 
 ### GIFs by IDs
 
-```c#
+```csharp
 using GiphyApiWrapper;
 using GiphyApiWrapper.Models.Parameters;
 
@@ -109,7 +132,7 @@ RootObject result = await giphy.GifsById(ids);
 
 ### Sticker Search
 
-```c#
+```csharp
 using GiphyApiWrapper;
 using GiphyApiWrapper.Models.Parameters;
 using GiphyApiWrapper.Models.Parameters.Stickers;
@@ -128,7 +151,7 @@ RootObject result = await giphy.StickerSearch(parameter);
 
 ### Sticker Translate
 
-```c#
+```csharp
 using GiphyApiWrapper;
 using GiphyApiWrapper.Models.Parameters;
 using GiphyApiWrapper.Models.Parameters.Stickers;
@@ -143,7 +166,7 @@ GiphySingle result = await giphy.StickerTranslate(parameter);
 
 ### Sticker Trending
 
-```c#
+```csharp
 using GiphyApiWrapper;
 using GiphyApiWrapper.Models.Parameters;
 using GiphyApiWrapper.Models.Parameters.Stickers;
@@ -159,7 +182,7 @@ RootObject result = await giphy.StickerTrending(parameter);
 
 ### Sticker Random
 
-```c#
+```csharp
 using GiphyApiWrapper;
 using GiphyApiWrapper.Models.Parameters;
 using GiphyApiWrapper.Models.Parameters.Stickers;
