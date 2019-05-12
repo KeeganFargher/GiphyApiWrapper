@@ -2,7 +2,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-16.04'
+  vmImage: 'windows-2019'
 
 variables:
   buildConfiguration: 'Release'
@@ -24,12 +24,6 @@ steps:
     command: test
     projects: '**/Giphy.Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
-- task: DotNetCoreCLI@2
-  displayName: 'Pack'
-  inputs:
-    command: pack
-    versioningScheme: byEnvVar
-    versionEnvVar: version
 - task: PublishBuildArtifacts@1
   inputs:
     ArtifactName: 'artifacts'
