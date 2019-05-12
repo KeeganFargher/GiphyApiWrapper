@@ -33,7 +33,7 @@ namespace GiphyApiWrapper.Tests.Giphy_Tests.Stickers
         }
 
         [Fact]
-        public async Task WhenCalled_ReturnsRootObject()
+        public async Task WhenCalled_ReturnsGiphySingle()
         {
             var mockHttpHandler = HttpHandler.GetMockSuccessHttpHandlerObject();
             var giphy = new Giphy(mockHttpHandler);
@@ -42,7 +42,7 @@ namespace GiphyApiWrapper.Tests.Giphy_Tests.Stickers
             var actual = await giphy.StickerRandom(search);
 
             Assert.NotNull(actual);
-            Assert.IsType<RootObject>(actual);
+            Assert.IsType<GiphySingle>(actual);
         }
     }
 }

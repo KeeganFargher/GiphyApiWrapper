@@ -5,6 +5,7 @@ using System.Text;
 
 namespace GiphyApiWrapper.Models
 {
+    [JsonObject]
     public class Data
     {
         [JsonProperty("type")]

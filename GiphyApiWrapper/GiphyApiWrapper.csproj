@@ -6,13 +6,13 @@
     <StartupObject />
     <Authors>Keegan Fargher</Authors>
     <PackageId>GiphyApiWrapper</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
     <Description>An API wrapper that makes it easy to consume Giphy endpoints.</Description>
     <RepositoryUrl>https://github.com/KeeganFargher/GiphyApiWrapper</RepositoryUrl>
     <PackageTags>giphy api keegan fargher standard dotnet gif search images jif wrapper</PackageTags>
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://github.com/KeeganFargher/GiphyApiWrapper</PackageProjectUrl>
-    <PackageReleaseNotes>Added sticker endpoints</PackageReleaseNotes>
+    <PackageReleaseNotes>Fixed an issue where methods were using the wrong URL</PackageReleaseNotes>
     <PackageIconUrl>https://giphy.com/static/img/giphy_logo_square_social.png</PackageIconUrl>
   </PropertyGroup>
 

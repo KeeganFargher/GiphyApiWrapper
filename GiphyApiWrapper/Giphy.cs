@@ -134,7 +134,7 @@ namespace GiphyApiWrapper
         /// </summary>
         /// <param name="parameter">Specifies search parameters/param>
         /// <returns>Root object</returns>
-        public async Task<RootObject> Translate(TranslateParameter parameter)
+        public async Task<GiphySingle> Translate(TranslateParameter parameter)
         {
             if (parameter is null)
             {
@@ -162,7 +162,7 @@ namespace GiphyApiWrapper
                 throw new HttpRequestException(response.ReasonPhrase);
             }
 
-            return await response.Content.ReadAsAsync<RootObject>();
+            return await response.Content.ReadAsAsync<GiphySingle>();
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace GiphyApiWrapper
         /// </summary>
         /// <param name="parameter">Specifies search parameters/param>
         /// <returns>Root object</returns>
-        public async Task<RootObject> Random(RandomParameter parameter)
+        public async Task<GiphySingle> Random(RandomParameter parameter)
         {
             if (parameter is null)
             {
@@ -191,7 +191,7 @@ namespace GiphyApiWrapper
                 throw new HttpRequestException(response.ReasonPhrase);
             }
 
-            return await response.Content.ReadAsAsync<RootObject>();
+            return await response.Content.ReadAsAsync<GiphySingle>();
         }
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace GiphyApiWrapper
         /// </summary>
         /// <param name="gifId">The ID of the GIF/param>
         /// <returns>Root object</returns>
-        public async Task<RootObject> GifById(string gifId)
+        public async Task<GiphySingle> GifById(string gifId)
         {
             if (string.IsNullOrEmpty(gifId))
             {
@@ -217,7 +217,7 @@ namespace GiphyApiWrapper
                 throw new HttpRequestException(response.ReasonPhrase);
             }
 
-            return await response.Content.ReadAsAsync<RootObject>();
+            return await response.Content.ReadAsAsync<GiphySingle>();
         }
 
         /// <summary>
@@ -326,7 +326,7 @@ namespace GiphyApiWrapper
         /// </summary>
         /// <param name="parameter">Specifies search parameters</param>
         /// <returns>Root object</returns>
-        public async Task<RootObject> StickerTranslate(StickerTranslateParameter parameter)
+        public async Task<GiphySingle> StickerTranslate(StickerTranslateParameter parameter)
         {
             if (parameter is null)
             {
@@ -349,7 +349,7 @@ namespace GiphyApiWrapper
                 throw new HttpRequestException(response.ReasonPhrase);
             }
 
-            return await response.Content.ReadAsAsync<RootObject>();
+            return await response.Content.ReadAsAsync<GiphySingle>();
         }
 
         /// <summary>
@@ -359,7 +359,7 @@ namespace GiphyApiWrapper
         /// </summary>
         /// <param name="parameter">Specifies search parameters</param>
         /// <returns>Root object</returns>
-        public async Task<RootObject> StickerRandom(StickerRandomParameter parameter)
+        public async Task<GiphySingle> StickerRandom(StickerRandomParameter parameter)
         {
             if (parameter is null)
             {
@@ -379,7 +379,7 @@ namespace GiphyApiWrapper
                 throw new HttpRequestException(response.ReasonPhrase);
             }
 
-            return await response.Content.ReadAsAsync<RootObject>();
+            return await response.Content.ReadAsAsync<GiphySingle>();
         }
     }
 }

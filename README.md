@@ -61,7 +61,7 @@ var parameter = new TranslateParameter
     Query = "Cute kittens", // Required
     Weirdness = 10          // (Optional) Default - 10
 };
-RootObject result = await giphy.Translate(parameter);
+GiphySingle result = await giphy.Translate(parameter);
 ```
 
 ### Random
@@ -76,7 +76,7 @@ var parameter = new RandomParameter
     Tag = "Cute kittens", // (Optional)
     Rating = Rating.G     // (Optional) Default - G
 };
-RootObject result = await giphy.Random(parameter);
+GiphySingle result = await giphy.Random(parameter);
 ```
 
 ### GIF by ID
@@ -87,7 +87,7 @@ using GiphyApiWrapper.Models.Parameters;
 
 var giphy = new Giphy("YOUR_API_KEY");
 var id = "xT4uQulxzV39haRFjG"
-RootObject result = await giphy.GifById(id);
+GiphySingle result = await giphy.GifById(id);
 ```
 
 ### GIFs by IDs
@@ -138,7 +138,7 @@ var parameter = new StickerTranslateParameter
 {
     Query = "Cute doggies" // Required
 };
-RootObject result = await giphy.StickerTranslate(parameter);
+GiphySingle result = await giphy.StickerTranslate(parameter);
 ```
 
 ### Sticker Trending
@@ -170,5 +170,5 @@ var parameter = new StickerRandomParameter
     Tag = "Cute kittens", // (Optional)
     Rating = Rating.G     // (Optional) Default - G
 };
-RootObject result = await giphy.StickerRandom(parameter);
+GiphySingle result = await giphy.StickerRandom(parameter);
 ```
