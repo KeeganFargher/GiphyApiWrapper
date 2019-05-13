@@ -16,7 +16,7 @@ This is a simple wrapper for consuming Giphy endpoints in .NET. GiphyApiWrapper 
 
 ### Nuget
 
-`Install-Package GiphyApiWrapper`
+`Install-Package GiphyApiWrapper`  
 Head over to [Nuget](https://www.nuget.org/packages/GiphyApiWrapper/) to view more download options.
 
 ### Clone
