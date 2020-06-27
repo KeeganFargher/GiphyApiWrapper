@@ -14,7 +14,15 @@
     <PackageProjectUrl>https://github.com/KeeganFargher/GiphyApiWrapper</PackageProjectUrl>
     <PackageReleaseNotes>Fixed an issue where methods were using the wrong object</PackageReleaseNotes>
     <PackageIconUrl>https://giphy.com/static/img/giphy_logo_square_social.png</PackageIconUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
